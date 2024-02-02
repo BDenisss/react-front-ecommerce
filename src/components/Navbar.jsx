@@ -1,12 +1,28 @@
 // src/components/Navbar.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
+    const activeStyle = { color: '#61dafb' }; // La couleur que vous préférez pour les liens actifs
+
     return (
         <nav className="navbar">
-            <Link to="/">Home</Link>
-            <Link to="/cart">Cart</Link>
+            <NavLink 
+                to="/" 
+                style={({ isActive }) => 
+                isActive ? activeStyle : undefined
+            }
+            >
+            Home
+            </NavLink>
+            <NavLink 
+                to="/cart" 
+                style={({ isActive }) => 
+                isActive ? activeStyle : undefined
+            }
+            >
+                Cart
+            </NavLink>
         </nav>
     );
 };
