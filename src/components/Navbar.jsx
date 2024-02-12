@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -21,7 +20,7 @@ const Navbar = () => {
                 isActive ? activeStyle : undefined
             }
             >
-                Cart
+            Cart
             </NavLink>
         </nav>
     );

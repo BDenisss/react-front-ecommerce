@@ -1,0 +1,72 @@
+.clash-card {
+    background: white;
+    width: 300px;
+    display: inline-block;
+    margin: auto;
+    border-radius: 19px; 
+    text-align: center;
+    box-shadow: -1px 15px 30px -12px black;
+    z-index: 9999;
+}
+
+.clash-card__image img {
+    height: 220px;
+    margin-bottom: 35px;
+    border-top-left-radius: 14px; 
+    border-top-right-radius: 14px;
+}
+
+.clash-card__image--background{
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/barbarian-bg.jpg');
+}
+
+.clash-card__image--background img {
+    width: 400px;
+    position: absolute;    
+    top: -65px;
+    left: -70px;
+}
+
+.clash-card__unit-name {
+    font-size: 26px;
+    color: black;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.clash-card__unit-description {
+    padding: 20px;
+    margin-bottom: 10px;  
+}
+
+
+.all-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin: 16px 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    border-radius: 32px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.product-img {
+    
+}
+
+.product-title {
+
+}
+
+.product-details {
+
+}

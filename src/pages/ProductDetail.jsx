@@ -1,4 +1,3 @@
-// src/pages/ProductDetail.jsx
 import React from 'react';
 
 const ProductDetail = () => {

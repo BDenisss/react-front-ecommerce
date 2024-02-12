@@ -1,11 +1,18 @@
-// src/pages/Home.jsx
 import React from 'react';
+import { useGetProductsQuery } from '../services/productApi';
+import ProductComponent from '../components/ProductComponent';
 
 const Home = () => {
+    const { data: products, isLoading, isError } = useGetProductsQuery();
+
+    if (isLoading) return <div>Chargement...</div>;
+    if (isError || !products) return <div>Erreur lors du chargement des produits.</div>;
+
     return (
-        <div>
-            <h1>Page d'accueil</h1>
-        {/* Contenu de la page d'accueil ici */}
+        <div className='all-card'>
+            {products.map(product => (
+                <ProductComponent key={product.id} product={product} />
+            ))}
         </div>
     );
 };
