@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import './ProductComponent.css';
+import { CartContext } from '../context/CartContext';
+import  { FaShoppingCart, FaProductHunt } from 'react-icons/fa';
 
 const ProductDetailss = ({ product }) => {
+
+        const { addToCart } = useContext(CartContext); // Utilisation de useContext pour accéder aux fonctions du CartContext
+    
+        const handleAddToCart = () => {
+            addToCart(product); // Ajouter le produit au panier
+        };
+
     return (
         <div className='card-wrapper'>
             <div className='card'>
@@ -16,7 +25,12 @@ const ProductDetailss = ({ product }) => {
                     <p>Prix: {product.price}€</p>
                     <p>Quantité: {product.quantity}</p>
                 </div>
-                <Link to={{ pathname: `product/${product.id}`, state: { productName: product.title } }}>Voir le produit</Link>
+                <div className='link-product-wrapper'>
+                    <Link className='link-product' to={{ pathname: `product/${product.id}` }}><FaProductHunt/> Voir le produit</Link>
+                    {/* Ici ajouter un bouton pour ajouter au panier */}
+                    <button className='link-product' onClick={handleAddToCart}><FaShoppingCart/>Ajouter au panier</button>
+                </div>
+
             </div>
         </div>
     );
