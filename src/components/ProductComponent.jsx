@@ -1,20 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ProductComponent.css';
-
-const ProductDetails = ({ product }) => {
-    return (
-        <div className="clash-card">
-            <div className="clash-card__image clash-card__level--background">
-                <img src={product.image} alt={product.title} />
-            </div>
-            <div className="clash-card__unit-name">{product.title}</div>
-            <div className="clash-card__unit-description">
-                <p>{product.price}€</p>
-                <p>Quantité: {product.quantity}</p>
-            </div>
-        </div>
-    );
-}
 
 const ProductDetailss = ({ product }) => {
     return (
@@ -30,6 +16,7 @@ const ProductDetailss = ({ product }) => {
                     <p>Prix: {product.price}€</p>
                     <p>Quantité: {product.quantity}</p>
                 </div>
+                <Link to={{ pathname: `product/${product.id}`, state: { productName: product.title } }}>Voir le produit</Link>
             </div>
         </div>
     );
