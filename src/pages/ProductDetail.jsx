@@ -21,8 +21,6 @@ const ProductDetail = () => {
         }
     };
 
-    console.log(comments);
-
     if (isLoading) return <div>Chargement...</div>;
     if (isError || !comments) return <div>Erreur lors du chargement des commentaires.</div>;
 
