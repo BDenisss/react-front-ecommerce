@@ -5,8 +5,6 @@ import ProductComponent from '../components/ProductComponent';
 const Home = () => {
     const { data: products, isLoading, isError } = useGetProductsQuery();
 
-    console.log(products);
-
     if (isLoading) return <div>Chargement...</div>;
     if (isError || !products) return <div>Erreur lors du chargement des produits.</div>;
 

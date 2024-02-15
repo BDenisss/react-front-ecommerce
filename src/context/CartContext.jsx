@@ -1,16 +1,24 @@
-import React, { createContext, useContext, useReducer} from "react";
+import React, { createContext, useReducer} from "react";
 
 export const CartContext = createContext();
 
 
 
 function cartReducer(state, action) {
+    console.log('Action:', action); // Log l'action actuelle
+    console.log('Current State:', state); // Log l'état actuel avant la mise à jour
+
     switch (action.type) {
         case 'ADD_TO_CART':
-            return { ...state, items: [...state.items, action.payload] };
+            const newStateAdd = { ...state, items: [...state.items, action.payload] };
+            console.log('New State:', newStateAdd); // Log le nouvel état pour ADD_TO_CART
+            return newStateAdd;
         case 'REMOVE_FROM_CART':
-            return { ...state, items: state.items.filter(item => item.id !== action.payload.id) };
+            const newStateRemove = { ...state, items: state.items.filter(item => item.id !== action.payload.id) };
+            console.log('New State:', newStateRemove); // Log le nouvel état pour REMOVE_FROM_CART
+            return newStateRemove;
         case 'CLEAR_CART':
+            console.log('New State:', { ...state, items: [] }); // Log le nouvel état pour CLEAR_CART
             return { ...state, items: [] };
         default:
             throw new Error(`Unhandled action type: ${action.type}`);
