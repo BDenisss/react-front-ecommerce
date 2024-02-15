@@ -9,14 +9,36 @@ function cartReducer(state, action) {
     console.log('Current State:', state); // Log l'état actuel avant la mise à jour
 
     switch (action.type) {
+
         case 'ADD_TO_CART':
-            const newStateAdd = { ...state, items: [...state.items, action.payload] };
-            console.log('New State:', newStateAdd); // Log le nouvel état pour ADD_TO_CART
-            return newStateAdd;
-        case 'REMOVE_FROM_CART':
-            const newStateRemove = { ...state, items: state.items.filter(item => item.id !== action.payload.id) };
-            console.log('New State:', newStateRemove); // Log le nouvel état pour REMOVE_FROM_CART
-            return newStateRemove;
+            const existingItemIndex = state.items.findIndex(item => item.id === action.payload.id);
+            if (existingItemIndex >= 0) {
+                const newItems = state.items.map((item, index) => {
+                    if (index === existingItemIndex) {
+                        return { ...item, quantity: item.quantity + 1 }; 
+                    }
+                    return item;
+                });
+                return { ...state, items: newItems };
+            } else {
+                return { ...state, items: [...state.items, { ...action.payload, quantity: 1 }] }; 
+            }
+        
+case 'REMOVE_FROM_CART':
+    const indexToRemove = state.items.findIndex(item => item.id === action.payload.id);
+    if (indexToRemove >= 0 && state.items[indexToRemove].quantity > 1) {
+        const newItems = state.items.map((item, index) => {
+            if (index === indexToRemove) {
+                return { ...item, quantity: item.quantity - 1 };
+            }
+            return item;
+        });
+        return { ...state, items: newItems };
+    } else {
+        const filteredItems = state.items.filter(item => item.id !== action.payload.id);
+        return { ...state, items: filteredItems };
+    }
+
         case 'CLEAR_CART':
             console.log('New State:', { ...state, items: [] }); // Log le nouvel état pour CLEAR_CART
             return { ...state, items: [] };
