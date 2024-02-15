@@ -22,7 +22,14 @@ const ProductDetail = () => {
     };
 
 
-    if (isLoading) return <div className='loading'>Chargement...</div>;
+    if (isLoading) return (
+        <div className="loader-container">
+            <span className="loader"></span>
+            <p className="loader-text">Chargement...</p>
+        </div>
+    );
+    
+
     if (isError || !comments) return <div className='error'>Erreur lors du chargement des commentaires.</div>;
 
     return (

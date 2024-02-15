@@ -5,7 +5,16 @@ import ProductComponent from '../components/ProductComponent';
 const Home = () => {
     const { data: products, isLoading, isError } = useGetProductsQuery();
 
-    if (isLoading) return <div className='loading'>Chargement...</div>;
+    if (isLoading) return (
+        <div className="loader-container">
+            <span className="loader"></span>
+            <p className="loader-text">Chargement...</p>
+        </div>
+    );
+    
+    
+
+
     if (isError || !products) return <div className='error'>Erreur lors du chargement des produits.</div>;
 
     return (
