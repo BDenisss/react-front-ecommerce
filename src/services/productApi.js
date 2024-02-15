@@ -36,5 +36,6 @@ export const {
     useGetProductsQuery,
     useGetCommentsQuery, 
     useCreateCommentMutation,
+    useDeleteCommentMutation,
 
 } = productApi;

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useGetCommentsQuery } from '../services/productApi';
 import './ProductDetail.css';
 import { useState } from 'react';
-import { useCreateCommentMutation } from '../services/productApi';
+import { useCreateCommentMutation} from '../services/productApi';
 
 
 const ProductDetail = () => {
@@ -21,8 +21,9 @@ const ProductDetail = () => {
         }
     };
 
-    if (isLoading) return <div>Chargement...</div>;
-    if (isError || !comments) return <div>Erreur lors du chargement des commentaires.</div>;
+
+    if (isLoading) return <div className='loading'>Chargement...</div>;
+    if (isError || !comments) return <div className='error'>Erreur lors du chargement des commentaires.</div>;
 
     return (
         <div className='product-comment-page'>
@@ -57,7 +58,9 @@ const ProductDetail = () => {
                 {comments.length > 0 ? (
                     comments.map((comment) => (
                         <div className='comment' key={comment.id}>
-                            <p className='comment-username'>De {comment.username}</p>
+                            <div className='comment-header'>
+                                <p className='comment-username'>De {comment.username}</p>
+                            </div>
                             <p className='comment-content'>{comment.comment}</p>
                         </div>
                     ))

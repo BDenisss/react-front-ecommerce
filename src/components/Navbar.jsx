@@ -11,7 +11,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
-            <div>
+            <div className='all-navlink'>
                 <NavLink to="/" style={({ isActive }) => isActive ? activeStyle : undefined}>
                     <FaHome/> Home
                 </NavLink>

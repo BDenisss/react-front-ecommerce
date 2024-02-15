@@ -39,3 +39,20 @@
   }
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2rem;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2rem;
+  color: red;
+}
+
