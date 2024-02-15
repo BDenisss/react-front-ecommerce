@@ -3,7 +3,7 @@ import { CartContext } from '../context/CartContext';
 import "./Cart.css"
 
 const Cart = () => {
-    const { state , addToCart, removeFromCart} = useContext(CartContext);
+    const { state , addToCart, removeFromCart, clearCart} = useContext(CartContext);
 
 
     const handleAddToCart = (item) => {
@@ -14,6 +14,10 @@ const Cart = () => {
         removeFromCart(item.id); 
     };
 
+    const handleClearCart = () => {
+        clearCart();
+    };
+
     const totalPrice = state.items.reduce((total, item) => total + item.price * item.quantity, 0);
     const totalItems = state.items.reduce((total, item) => total + item.quantity, 0);
 
@@ -22,7 +26,7 @@ const Cart = () => {
         <div className='Cart-page'>
             <div className='header-cart-page'>
                 <h1>Votre panier</h1>
-                <button>Tout supprimer</button>
+                <button onClick={handleClearCart}>Tout supprimer</button>
             </div>
             {state.items.length > 0 ? (
                 <ul>
