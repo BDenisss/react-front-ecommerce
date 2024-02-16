@@ -6,10 +6,10 @@ import  { FaShoppingCart, FaProductHunt } from 'react-icons/fa';
 
 const ProductDetailss = ({ product }) => {
 
-        const { addToCart } = useContext(CartContext); // Utilisation de useContext pour accéder aux fonctions du CartContext
+        const { addToCart } = useContext(CartContext);
     
         const handleAddToCart = () => {
-            addToCart(product); // Ajouter le produit au panier
+            addToCart(product); 
         };
 
     return (
@@ -27,7 +27,6 @@ const ProductDetailss = ({ product }) => {
                 </div>
                 <div className='link-product-wrapper'>
                     <Link className='link-product' to={{ pathname: `product/${product.id}` }}><FaProductHunt/> Voir le produit</Link>
-                    {/* Ici ajouter un bouton pour ajouter au panier */}
                     <button className='link-product' onClick={handleAddToCart}><FaShoppingCart/>Ajouter au panier</button>
                 </div>
 
